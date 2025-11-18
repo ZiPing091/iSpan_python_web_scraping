@@ -9,7 +9,6 @@ pip install selenium
 ### 常用的套件
 ```python
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
@@ -18,19 +17,10 @@ options.add_argument("--start-maximized") # Chrome 瀏覽器在啟動時最大�
 options.add_argument("--incognito") # 無痕模式
 options.add_argument("--disable-popup-blocking") # 停用 Chrome 的彈窗阻擋功能。
 
-service = Service('./chromedriver.exe')  # 請根據實際路徑修改
-driver = webdriver.Chrome(service=service, options=options)
-
+# 建立 Chrome 的 webdriver 物件
+driver = webdriver.Chrome(options=options)
 # 開啟網頁
 driver.get("網頁 URL")
-```
-
-### Chrome driver download
-[Chrome webdriver Link](https://developer.chrome.com/docs/chromedriver/downloads?hl=zh-tw)  
-
-windows 指令下載 (記得修改使用的 Chrome 版本)
-```bash
-curl -L -o chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/<version>/win64/chromedriver-win64.zip"
 ```
 
 ### Chrome Options
@@ -134,3 +124,13 @@ window.scrollTo(0, document.body.scrollHeight);
 window.open('about:blank', '_blank');
 ```
 
+
+### Chrome driver download 
+> [!TIP]
+> Selenium 4.6.0 之後已經內建自動下載對應版本的 Chrome driver 功能，通常不需要手動下載。  
+
+[Chrome driver Link](https://developer.chrome.com/docs/chromedriver/downloads?hl=zh-tw)  
+windows 指令下載 (記得修改使用的 Chrome 版本)
+```bash
+curl -L -o chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/<version>/win64/chromedriver-win64.zip"
+```
